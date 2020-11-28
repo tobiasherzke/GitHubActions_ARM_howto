@@ -33,4 +33,9 @@ jobs:
       - name: Test running a docker container with foreign architecture
         run: |
           uname -a
+          systemctl status binfmt-support
+          dpkg -l qemu-user*
+          sudo apt install qemu-user-static
+          ls -la /etc/binfmt.d
+          ls -la /usr/lib/binfmt.d
           docker run --rm -i hoertech/docker-buildenv:mha_armv7-linux-gcc-7 uname -a
