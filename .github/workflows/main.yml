@@ -33,4 +33,4 @@ jobs:
       - name: Test running a docker container with foreign architecture
         run: |
           uname -a
-          docker run --rm -it hoertech/docker-buildenv:mha_armv7-linux-gcc-7 uname -a
+          docker run --rm -i hoertech/docker-buildenv:mha_armv7-linux-gcc-7 uname -a
