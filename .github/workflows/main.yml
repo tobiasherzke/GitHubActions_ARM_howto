@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,9 +30,7 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Find out about installed cmake
+      - name: Test running a docker container with foreign architecture
         run: |
-          which cmake
-          ls -l $(which cmake)
-          dpkg -l \*cmake\*
-          apt-get download cmake
+          uname -a
+          docker run --rm -it hoertech/docker-buildenv:mha_armv7-linux-gcc-7 uname -a
