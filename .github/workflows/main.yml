@@ -38,4 +38,9 @@ jobs:
           sudo apt-get -y install qemu-user-static
           ls -la /etc/binfmt.d
           ls -la /usr/lib/binfmt.d
+          git clone https://github.com/computermouth/qemu-static-conf.git
+          sudo mkdir -p /lib/binfmt.d
+          sudo cp qemu-static-conf/*.conf /lib/binfmt.d/
+          sudo systemctl restart systemd-binfmt.service
+          systemctl status binfmt-support || true
           docker run --rm -i hoertech/docker-buildenv:mha_armv7-linux-gcc-7 uname -a
