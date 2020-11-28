@@ -33,7 +33,7 @@ jobs:
       - name: Test running a docker container with foreign architecture
         run: |
           uname -a
-          systemctl status binfmt-support
+          systemctl status binfmt-support || true
           dpkg -l qemu-user*
           sudo apt install qemu-user-static
           ls -la /etc/binfmt.d
